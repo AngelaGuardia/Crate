@@ -1,3 +1,5 @@
+// NOTE: 4. This is where the schema setup starts
+
 // Imports
 import { GraphQLSchema } from 'graphql'
 
