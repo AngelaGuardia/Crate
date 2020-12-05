@@ -1,3 +1,5 @@
+// 1. This is where the app setup starts
+
 // Imports
 import express from 'express'
 
