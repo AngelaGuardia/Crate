@@ -1,3 +1,4 @@
+// NOTE: 6. This is where we start to define mutations
 // Imports
 import { GraphQLObjectType } from 'graphql'
 
