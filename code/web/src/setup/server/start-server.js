@@ -12,3 +12,5 @@ export default function (server) {
     }
   })
 }
+
+// QUESTION: Why do we need an almost identical file in the api directory?
