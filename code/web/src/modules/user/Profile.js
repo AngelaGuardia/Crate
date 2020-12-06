@@ -1,11 +1,15 @@
 //Files of code that will need updates:
   // Most exist within code/web/src/modules/user
-  // 1. ./api/actions.js
-  // 2. ./api/state.js
+  // 1. ./api/actions.js - DONE
+  // 2. ./api/state.js  - DONE
   // 3. Profile.js  - DONE
-  // 4. Subscriptions.js
-  // 5. store.js from ../setup/store.js
-  // 6. user.js from ../setup/routes/user.js
+  // 4. store.js from ../setup/store.js  - DONE
+  // 5. user.js from ../setup/routes/user.js  - DONE
+
+  //Upcoming Tasks:
+    //put these files into directories so that tests can be grouped with implementation file
+    //create a History.js file for new functional component to display data from backend
+    //create a ProfileForm.js file for component to be rendered in edit mode
 
 // Imports
 import React from 'react'
