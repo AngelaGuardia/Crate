@@ -33,6 +33,7 @@ export const rootReducer = (state, action) => {
 let initialState
 if (typeof window !== 'undefined') {
   initialState = window.__INITIAL_STATE__
+  // change th initial state of window (keeping it as initialState)
   delete window.__INITIAL_STATE__
 }
 
@@ -40,7 +41,7 @@ if (typeof window !== 'undefined') {
 export const store = createStore(
   rootReducer,
   initialState,
-
+  // composeWithDevTools()
   composeWithDevTools(
     applyMiddleware(thunk),
   )
