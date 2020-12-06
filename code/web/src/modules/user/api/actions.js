@@ -117,3 +117,25 @@ export function getGenders() {
     }))
   }
 }
+
+// frontend would have an export function updateProfile() that would be linked
+// with a mutation like updateUser b/c we want to update fields.
+// We would pass in the fields that can be updated aka id, name, description,
+// email address, shipping address, image
+
+// Using the functions above as guideline, this action could look like:
+// Update user profile
+ // export function updateProfile() {
+ //   return dispatch => {
+//     return axios.post(routeApi, mutation({
+//       operation: 'updateUser',
+//       fields: ['id', 'name', 'description', 'email', 'address', 'image']
+//     }))
+//   }
+ // }
+
+ // Probably have to use a query to pull up a user's productHistory because
+ // that lookup would have to be done using userID.
+ // If the kept? attribute is true, then the product from the crate was kept by
+ // the user. From here, frontend would have the data they need to display
+ // productHistory for a given user.
