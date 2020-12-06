@@ -33,15 +33,16 @@ const Profile = (props) => (
     <Grid>
       <GridCell style={{ padding: '2em', textAlign: 'center' }}>
         <H4 style={{ marginBottom: '0.5em' }}>{props.user.details.name}</H4>
-        {/* ProfileForm */}
+        {/* <ProfileForm /> */}
+        {/* Include input type of date for availability  */}
 
         {/* props.user.details.email would get moved to ProfileForm */}
         <p style={{ color: grey2, marginBottom: '2em' }}>{props.user.details.email}</p>
-
+        {/* userRoutes from inports is used in this here link */}
         <Link to={userRoutes.subscriptions.path}>
           <Button theme="primary">Subscriptions</Button>
         </Link>
-
+        {/* This comes from the action.js file */}
         <Button theme="secondary" onClick={props.logout} style={{ marginLeft: '1em' }}>Logout</Button>
       </GridCell>
     </Grid>
@@ -55,18 +56,12 @@ Profile.propTypes = {
 }
 
 // Component State
+// allows this component access to the store so we can get to user
 function profileState(state) {
   return {
     user: state.user
   }
 }
 
+// connecting to the redux store
 export default connect(profileState, { logout })(Profile)
-
-/*
-
-var fields = schema.query.name.fields()
-
-fields.user[0]
-
-*/
