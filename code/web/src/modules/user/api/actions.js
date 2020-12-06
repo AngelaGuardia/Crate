@@ -134,3 +134,8 @@ export function getGenders() {
     }))
   }
 }
+
+/* the team is considering adding two more action creators:
+  UPDATE_PROFILE => when user clicks Save in edit view for profile, send new info 
+  UPDATE_AVAILABILITY => when user clicks Update Availability after selecting at least one date
+*/
