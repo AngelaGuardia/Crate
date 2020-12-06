@@ -37,3 +37,5 @@ module.exports = {
     return queryInterface.dropTable('subscriptions');
   }
 }
+
+// TODO: Will need to add new migrations files like this one to create new tables. Will need to add similar file to add columns to existing tables
