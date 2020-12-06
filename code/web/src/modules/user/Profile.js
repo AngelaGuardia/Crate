@@ -2,7 +2,7 @@
   // Most exist within code/web/src/modules/user
   // 1. ./api/actions.js
   // 2. ./api/state.js
-  // 3. Profile.js
+  // 3. Profile.js  - DONE
   // 4. Subscriptions.js
   // 5. store.js from ../setup/store.js
   // 6. user.js from ../setup/routes/user.js
@@ -48,7 +48,8 @@ const Profile = (props) => (
         <H4 style={{ marginBottom: '0.5em' }}>{props.user.details.name}</H4>
         <p style={{ color: grey2, marginBottom: '2em' }}>{props.user.details.email}</p>
         {/* Here is where we would want to render a new component for the edit view
-         it could potentially be called < ProfileForm /> */}
+         it could potentially be called < ProfileForm /> and will need to include
+         an input with type of date so user can select availability*/}
         {/* The following link allows the user to view their subscriptions
             by accessing the userRoutes object from imports */}
         <Link to={userRoutes.subscriptions.path}>
