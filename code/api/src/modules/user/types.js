@@ -1,7 +1,8 @@
 // Imports
 import { GraphQLObjectType, GraphQLString, GraphQLInt } from 'graphql'
 
-// User type
+// User type - sets the field types for a User and designates whether they are
+// strings, integers, etc.
 const UserType = new GraphQLObjectType({
   name: 'user',
   description: 'User type',

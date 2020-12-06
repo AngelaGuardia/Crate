@@ -7,7 +7,7 @@ import serverConfig from '../../config/server'
 import params from '../../config/params'
 import models from '../../setup/models'
 
-// Create
+// Create - function to create a User aka signup
 export async function create(parentValue, { name, email, password }) {
   // Users exists with same email check
   const user = await models.User.findOne({ where: { email } })
@@ -15,7 +15,7 @@ export async function create(parentValue, { name, email, password }) {
   if (!user) {
     // User does not exists
     const passwordHashed = await bcrypt.hash(password, serverConfig.saltRounds)
-
+    // creates a User with name, email and password that is encrypted with bcrypt
     return await models.User.create({
       name,
       email,
@@ -26,7 +26,7 @@ export async function create(parentValue, { name, email, password }) {
     throw new Error(`The email ${ email } is already registered. Please try to login.`)
   }
 }
-
+// function to login a User who has already signed up before
 export async function login(parentValue, { email, password }) {
   const user = await models.User.findOne({ where: { email } })
 
@@ -49,7 +49,8 @@ export async function login(parentValue, { email, password }) {
         email: userDetails.email,
         role: userDetails.role
       }
-
+      // generates secret/secure token with user's id, name, email and role upon
+      // successful login
       return {
         user: userDetails,
         token: jwt.sign(userDetailsToken, serverConfig.secret)
