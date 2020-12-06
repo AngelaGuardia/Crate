@@ -16,10 +16,12 @@ export const userInitialState = {
 // Here, it will have new keys of availability (array), and img, email, address, description (strings)
 export default (state = userInitialState, action) => {
   switch (action.type) {
+    // do we add history, description, address, and image to details where email already is?
     case SET_USER:
       return {
         ...state,
         isAuthenticated: !isEmpty(action.user),
+        // details is set using setUser() from actions
         details: action.user,
       }
 
@@ -36,7 +38,7 @@ export default (state = userInitialState, action) => {
         error: action.error,
         isLoading: false
       }
-
+    // will need to set state for new keys (history, description, img)
     case LOGOUT:
       return {
         ...state,
