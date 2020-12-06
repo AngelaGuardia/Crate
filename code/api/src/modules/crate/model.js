@@ -16,3 +16,5 @@ module.exports = function(sequelize, DataTypes) {
 
   return Crate
 }
+
+// TODO: Add relationships. A crate has many products through crate products
