@@ -33,7 +33,9 @@ const Profile = (props) => (
     <Grid>
       <GridCell style={{ padding: '2em', textAlign: 'center' }}>
         <H4 style={{ marginBottom: '0.5em' }}>{props.user.details.name}</H4>
+        {/* ProfileForm */}
 
+        {/* props.user.details.email would get moved to ProfileForm */}
         <p style={{ color: grey2, marginBottom: '2em' }}>{props.user.details.email}</p>
 
         <Link to={userRoutes.subscriptions.path}>
@@ -60,3 +62,11 @@ function profileState(state) {
 }
 
 export default connect(profileState, { logout })(Profile)
+
+/*
+
+var fields = schema.query.name.fields()
+
+fields.user[0]
+
+*/
