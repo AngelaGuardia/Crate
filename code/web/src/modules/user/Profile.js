@@ -1,10 +1,11 @@
 //Files of code that will need updates:
-  // All exist within code/web/src/modules/user
+  // Most exist within code/web/src/modules/user
   // 1. ./api/actions.js
   // 2. ./api/state.js
   // 3. Profile.js
   // 4. Subscriptions.js
-
+  // 5. store.js from ../setup/store.js
+  // 6. user.js from ../setup/routes/user.js
 
 // Imports
 import React from 'react'
@@ -24,6 +25,7 @@ import userRoutes from '../../setup/routes/user'
 import { logout } from './api/actions'
 
 // Component
+//Profile is currently a functional component - we should keep it this way
 const Profile = (props) => (
   <div>
     {/* SEO */}
@@ -32,6 +34,8 @@ const Profile = (props) => (
     </Helmet>
 
     {/* Top title bar */}
+    {/* Wondering why there is inline CSS here, 
+    are we meant to refactor this or run with it as we make updates to this file?*/}
     <Grid style={{ backgroundColor: grey }}>
       <GridCell style={{ padding: '2em', textAlign: 'center' }}>
         <H3 font="secondary">My profile</H3>
@@ -40,14 +44,20 @@ const Profile = (props) => (
 
     <Grid>
       <GridCell style={{ padding: '2em', textAlign: 'center' }}>
+        {/* The following two lines render the name and email from user.details */}
         <H4 style={{ marginBottom: '0.5em' }}>{props.user.details.name}</H4>
-
         <p style={{ color: grey2, marginBottom: '2em' }}>{props.user.details.email}</p>
-        //Profile Form - class component
+        {/* Here is where we would want to render a new component for the edit view
+         it could potentially be called < ProfileForm /> */}
+        {/* The following link allows the user to view their subscriptions
+            by accessing the userRoutes object from imports */}
         <Link to={userRoutes.subscriptions.path}>
           <Button theme="primary">Subscriptions</Button>
         </Link>
-
+        {/* props.logout originates from the actions.js file, 
+          where user object is removed from local storage and 
+          action.type === LOGOUT, triggering case LOGOUT in state.js,
+          which resets the user object to have details === null */}
         <Button theme="secondary" onClick={props.logout} style={{ marginLeft: '1em' }}>Logout</Button>
       </GridCell>
     </Grid>
@@ -61,10 +71,21 @@ Profile.propTypes = {
 }
 
 // Component State
+/*
+profileState() is acting as mapStateToProps to allow this component 
+access to the user object from the global store.
+user is referenced throughout this component.
+*/
 function profileState(state) {
   return {
     user: state.user
   }
 }
 
+/*
+connect() links a React component (Profile) to the Redux store
+profileState acts as mapStateToProps and allows the Profile component to read state.user
+{ logout } acts as mapDispatchToProps, which allows the users reducer to return state
+based on the changes specified in state.js
+*/
 export default connect(profileState, { logout })(Profile)
