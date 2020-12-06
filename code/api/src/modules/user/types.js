@@ -1,7 +1,9 @@
+// NOTE: 7.1 This is where user types are defined
 // Imports
 import { GraphQLObjectType, GraphQLString, GraphQLInt } from 'graphql'
 
 // User type
+
 const UserType = new GraphQLObjectType({
   name: 'user',
   description: 'User type',
@@ -9,7 +11,7 @@ const UserType = new GraphQLObjectType({
   fields: () => ({
     id: { type: GraphQLInt },
     name: { type: GraphQLString },
-    email: { type: GraphQLString },
+    email: { type: GraphQLString }, // TODO: add new fields here: shipping address, image, description
     password: { type: GraphQLString },
     role: { type: GraphQLString },
     createdAt: { type: GraphQLString },
