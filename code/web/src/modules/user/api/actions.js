@@ -16,12 +16,13 @@ export const LOGOUT = 'AUTH/LOGOUT'
 
 // Set a user after login or using localStorage token
 export function setUser(token, user) {
+  // the below code looks like axios style of a header for fetch calls
   if (token) {
     axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
   } else {
     delete axios.defaults.headers.common['Authorization'];
   }
-
+  // returning the action object SET_USER
   return { type: SET_USER, user }
 }
 
@@ -90,9 +91,11 @@ export function register(userDetails) {
 // Log out user and remove token from localStorage
 export function logout() {
   return dispatch => {
+// Removes user from local storage 
     logoutUnsetUserLocalStorageAndCookie()
 
     dispatch({
+      // action object LOGOUT
       type: LOGOUT
     })
   }
@@ -117,3 +120,7 @@ export function getGenders() {
     }))
   }
 }
+
+/* 
+I think we'll also have UPDATE_PROFILE and UPDATE_AVAILABILITY for respective action creators
+*/
