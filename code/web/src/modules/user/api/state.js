@@ -11,6 +11,9 @@ export const userInitialState = {
 }
 
 // State
+// This becomes the user object...?
+// If so, this is where we will recieve the user object from back end
+// Here, it will have new keys of availability (array), and img, email, address, description (strings)
 export default (state = userInitialState, action) => {
   switch (action.type) {
     case SET_USER:
