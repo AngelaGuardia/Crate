@@ -23,3 +23,7 @@ module.exports = function(sequelize, DataTypes) {
     }
   })
 }
+
+// TODO: Add relationships. A product belongs to many crates through crate products
+
+// TODO: A product belongs to a user through user products
