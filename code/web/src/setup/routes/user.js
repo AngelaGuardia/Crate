@@ -5,6 +5,7 @@ import Profile from '../../modules/user/Profile'
 import Subscriptions from '../../modules/user/Subscriptions'
 
 // User routes
+// imported elsewhere as userRoutes
 export default {
   login: {
     path: '/user/login',
@@ -15,7 +16,7 @@ export default {
     path: '/user/signup',
     component: Signup
   },
-
+  // will be used for both edit, and published views of profile
   profile: {
     path: '/user/profile',
     component: Profile,
@@ -28,3 +29,5 @@ export default {
     auth: true
   }
 }
+
+// Add history prop
