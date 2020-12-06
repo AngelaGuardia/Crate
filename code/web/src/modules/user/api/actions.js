@@ -31,6 +31,7 @@ export function setUser(token, user) {
     
   */
   if (token) {
+    //.headers seems similar to the headers object in non-GET requests (POST, DELETE)
     axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
   } else {
     delete axios.defaults.headers.common['Authorization'];
