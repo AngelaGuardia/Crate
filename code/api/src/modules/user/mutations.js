@@ -8,7 +8,8 @@ import { create, remove } from './resolvers'
 // Create - designates type to be User, therefore this also sets the attributes
 // that would need to be filled in to create a new user aka signup
 // Building a userUpdate mutation could allow for image, description, address to
-// be added to a user
+// be added to a user.
+// A resolver, probably 'update', will be needed too.
 export const userSignup = {
   type: UserType,
   args: {
