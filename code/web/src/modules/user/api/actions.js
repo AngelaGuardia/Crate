@@ -1,4 +1,5 @@
 // Imports
+//axios seems to be a way to make network requests, similar to fetch
 import axios from 'axios'
 import { query, mutation } from 'gql-query-builder'
 import cookie from 'js-cookie'
@@ -16,12 +17,27 @@ export const LOGOUT = 'AUTH/LOGOUT'
 
 // Set a user after login or using localStorage token
 export function setUser(token, user) {
+  /*
+    Question: I did some research on axios and couldn't find much
+    documentation on the defaults object.. I'm interpreting this
+    as ['Authorization'] is being typed with brackets to make this
+    executable code dynamic, and that there are other key names within
+    the common object that can be accessed here.  Assuming that
+    `Bearer ${token}` is the value of .common.Authorization and allows
+    the user to be identified by a mixture of special characters...
+    I am wondering how this axios object works and where it comes from.
+    if a token exists (not undefined or false) => authorize the login
+    if token is false => delete authorization 
+    
+  */
   if (token) {
     axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
   } else {
     delete axios.defaults.headers.common['Authorization'];
   }
-
+  /*in the end, return the action object with type SET_USER 
+  and user key with value of user argument (ES6)
+  */
   return { type: SET_USER, user }
 }
 
@@ -90,8 +106,9 @@ export function register(userDetails) {
 // Log out user and remove token from localStorage
 export function logout() {
   return dispatch => {
+    //removes user object from local storage and removes auth from cookie
     logoutUnsetUserLocalStorageAndCookie()
-
+    //sends the action object via dispatch to the reducer => sets up store so there are no user details
     dispatch({
       type: LOGOUT
     })
