@@ -1,3 +1,11 @@
+//Files of code that will need updates:
+  // All exist within code/web/src/modules/user
+  // 1. ./api/actions.js
+  // 2. ./api/state.js
+  // 3. Profile.js
+  // 4. Subscriptions.js
+
+
 // Imports
 import React from 'react'
 import PropTypes from 'prop-types'
@@ -35,7 +43,7 @@ const Profile = (props) => (
         <H4 style={{ marginBottom: '0.5em' }}>{props.user.details.name}</H4>
 
         <p style={{ color: grey2, marginBottom: '2em' }}>{props.user.details.email}</p>
-
+        //Profile Form - class component
         <Link to={userRoutes.subscriptions.path}>
           <Button theme="primary">Subscriptions</Button>
         </Link>
