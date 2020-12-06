@@ -1,3 +1,4 @@
+// NOTE: 7.4 This is where the User mutations are defined
 // Imports
 import { GraphQLString, GraphQLInt } from 'graphql'
 
@@ -26,6 +27,8 @@ export const userSignup = {
   },
   resolve: create
 }
+// NOTE: This mutation allows a user to sign up. It is of UserType, it takes name, email, password. All of which are of type string - goes to create resolver
+
 
 // Remove
 export const userRemove = {
@@ -38,3 +41,6 @@ export const userRemove = {
   },
   resolve: remove
 }
+// NOTE: This mutation removes a user from the DB
+
+// TODO: Add an update mutation that allows user to update most/all of their info
