@@ -13,7 +13,7 @@ const SubscriptionType = new GraphQLObjectType({
   fields: () => ({
     id: { type: GraphQLInt },
     user: { type: UserType },
-    crate: { type: CrateType },
+    crate: { type: CrateType }, // TODO: Add next delivery date
     createdAt: { type: GraphQLString },
     updatedAt: { type: GraphQLString }
   })

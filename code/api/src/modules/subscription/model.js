@@ -8,7 +8,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     crateId: {
       type: DataTypes.INTEGER
-    }
+    } // TODO: Add next delivery date
   })
 
   Subscription.associate = function(models) {
