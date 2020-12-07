@@ -28,6 +28,7 @@ class Login extends Component {
   constructor(props) {
     super(props)
 
+    {/*This is obviously just a controlled form for user login, class component with local state*/}
     this.state = {
       user: {
         email: '',
@@ -48,6 +49,11 @@ class Login extends Component {
   }
 
   onSubmit = (event) => {
+  {/*
+  onSubmit user submits the current value of state
+  this.props.login is the axios post request to query the database
+  if error this.props.messageShow displays it
+      */}
     event.preventDefault()
 
     this.props.messageShow('Logging in, please wait...')
