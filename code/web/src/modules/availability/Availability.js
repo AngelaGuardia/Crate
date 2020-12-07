@@ -1,7 +1,10 @@
 import React from 'react';
 import moment from 'moment';
+import { connect } from 'react-redux';
+import { updateAvailability } from '../subscription/api/actions';
 
-export const Availability = () => {
+const Availability = (props) => {
+  //change minDate from today's date to current delivery date from BE
   let minDate = moment().format('YYYY-MM-DD');
   let maxDate = moment().add(7, 'days').format('YYYY-MM-DD');
   return (
@@ -19,3 +22,5 @@ export const Availability = () => {
     </section>
   )   
 }
+
+export default connect(null, { updateAvailability })(Availability)
