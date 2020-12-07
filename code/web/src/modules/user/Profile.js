@@ -34,8 +34,18 @@ const Profile = (props) => (
       <GridCell style={{ padding: '2em', textAlign: 'center' }}>
         <H4 style={{ marginBottom: '0.5em' }}>{props.user.details.name}</H4>
 
+        {/*
+        this is where the user profile component will be rendered
+        will also include the email above 
+        will have image, description, picture, etc
+        component will have a normal view and an edit view so the user may make updates
+        */}
         <p style={{ color: grey2, marginBottom: '2em' }}>{props.user.details.email}</p>
 
+        {/*
+        This link brings you to /subscriptions which triggers the subscriptions component to render
+        subscription path is evaluated by route and <RoutePrivate /> is rendered with subscriptions component
+        */}
         <Link to={userRoutes.subscriptions.path}>
           <Button theme="primary">Subscriptions</Button>
         </Link>
