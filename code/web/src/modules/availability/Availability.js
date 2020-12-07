@@ -2,12 +2,13 @@ import React from 'react';
 import moment from 'moment';
 
 export const Availability = () => {
-  let futureDate = moment().add(7, 'days').format('YYYY-MM-DD');
+  let minDate = moment().format('YYYY-MM-DD');
+  let maxDate = moment().add(7, 'days').format('YYYY-MM-DD');
   return (
     <article>
       <label htmlFor='select-availability'>
         Select Availability:
-        <input type='date' min={Date.now()} max={futureDate}/>
+        <input type='date' min={minDate} max={maxDate}/>
       </label>
     </article>
   )   
