@@ -1,3 +1,6 @@
+import React from 'react';
+import Button from '../ui/button';
+
 // Helpers
 
 // Render element or component by provided condition
@@ -52,4 +55,12 @@ export function slug(text) {
     //.replace(/\-\-+/g, '-')         // Replace multiple - with single -
     .replace(/^-+/, '')             // Trim - from start of text
     .replace(/-+$/, '')            // Trim - from end of text
+}
+
+export function determineProfileButton(user) {
+  if (user.isEditMode) {
+    return <Button theme="secondary">Save Profile</Button>
+  } else {
+    return <Button theme="secondary">Edit Profile</Button> 
+  }
 }
