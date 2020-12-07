@@ -5,6 +5,10 @@ import Profile from '../../modules/user/Profile'
 import Subscriptions from '../../modules/user/Subscriptions'
 
 // User routes
+// will need to add new route for '/user/history'
+// all routes here are triggered by the switch statement on App
+// depending on which route the user is on, the component and auth is exported
+// auth determines if <RoutePrivate /> or <Route /> is rendered
 export default {
   login: {
     path: '/user/login',
