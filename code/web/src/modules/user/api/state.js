@@ -1,13 +1,14 @@
 // App Imports
 import { isEmpty } from '../../../setup/helpers'
-import { SET_USER, LOGIN_REQUEST, LOGIN_RESPONSE, LOGOUT } from './actions'
+import { SET_USER, LOGIN_REQUEST, LOGIN_RESPONSE, LOGOUT, SET_EDIT_MODE } from './actions'
 
 // Initial State
 export const userInitialState = {
   error: null,
   isLoading: false,
   isAuthenticated: false,
-  details: null
+  details: null,
+  isEditMode: true
 }
 
 // State
@@ -41,6 +42,14 @@ export default (state = userInitialState, action) => {
         isLoading: false,
         isAuthenticated: false,
         details: null
+      }
+    
+    case SET_EDIT_MODE:
+      return {
+        ...state,
+        error: null,
+        isLoading: false,
+        isEditMode: true
       }
 
     default:
