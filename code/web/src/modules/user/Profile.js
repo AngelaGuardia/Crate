@@ -3,6 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Helmet } from 'react-helmet'
+import { Availability } from '../availability/availability';
 import { Link } from 'react-router-dom'
 
 // UI Imports
@@ -35,7 +36,7 @@ const Profile = (props) => (
         <H4 style={{ marginBottom: '0.5em' }}>{props.user.details.name}</H4>
 
         <p style={{ color: grey2, marginBottom: '2em' }}>{props.user.details.email}</p>
-
+        <Availability />
         <Link to={userRoutes.subscriptions.path}>
           <Button theme="primary">Subscriptions</Button>
         </Link>
