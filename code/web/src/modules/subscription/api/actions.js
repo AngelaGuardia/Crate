@@ -15,6 +15,7 @@ export const SUBSCRIPTIONS_GET_LIST_BY_USER_FAILURE = 'SUBSCRIPTIONS/GET_LIST_BY
 export const SUBSCRIPTIONS_GET_REQUEST = 'SUBSCRIPTIONS/GET_REQUEST'
 export const SUBSCRIPTIONS_GET_RESPONSE = 'SUBSCRIPTIONS/GET_RESPONSE'
 export const SUBSCRIPTIONS_GET_FAILURE = 'SUBSCRIPTIONS/GET_FAILURE'
+export const UPDATE_AVAILABILITY = 'SUBSCRIPTIONS/UPDATE_AVAILABILITY'
 
 // Actions
 
@@ -141,3 +142,9 @@ export function remove(variables) {
     }))
   }
 }
+
+//Update single date for availability
+export const updateAvailability = (date) => ({
+  type: 'UPDATE_AVAILABILITY',
+  date
+})
