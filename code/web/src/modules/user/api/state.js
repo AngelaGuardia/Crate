@@ -10,6 +10,14 @@ export const userInitialState = {
   details: null
 }
 
+{/*
+these reducers are pretty self explanatory
+depending on which case is dispatched, state in the store is adjustted accordingly
+we will need to add a few cases here 
+UPDATE_AVAILABILITY
+UPDATE_PROFILE
+etc...
+    */}
 // State
 export default (state = userInitialState, action) => {
   switch (action.type) {
