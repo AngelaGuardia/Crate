@@ -50,6 +50,11 @@ const Profile = (props) => (
           <Button theme="primary">Subscriptions</Button>
         </Link>
 
+
+        {/*
+        This button removes the token from local storage so a user no longer is automatically logged in when arriving
+        props.logout is the action that does this
+        */}
         <Button theme="secondary" onClick={props.logout} style={{ marginLeft: '1em' }}>Logout</Button>
       </GridCell>
     </Grid>
