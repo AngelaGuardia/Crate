@@ -15,6 +15,11 @@ export const LOGOUT = 'AUTH/LOGOUT'
 // Actions
 
 // Set a user after login or using localStorage token
+
+{/*
+this is the function where the user is set after login
+assuming that this is setting the headers for axios requests to include cookies
+    */}
 export function setUser(token, user) {
   if (token) {
     axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
@@ -26,6 +31,11 @@ export function setUser(token, user) {
 }
 
 // Login a user using credentials
+{/*
+this is the function that actually validates user info
+dispatches user info to store locally
+sets localStorage / cookies to have user info persist until logout
+    */}
 export function login(userCredentials, isLoading = true) {
   return dispatch => {
     dispatch({
@@ -77,6 +87,12 @@ export function loginSetUserLocalStorageAndCookie(token, user) {
 }
 
 // Register a user
+{/*
+this is the function that signs a user up
+simple axios post request that adds details to the database
+not the use of mutation as opposed to query
+    */}
+
 export function register(userDetails) {
   return dispatch => {
     return axios.post(routeApi, mutation({
