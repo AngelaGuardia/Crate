@@ -3,8 +3,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Helmet } from 'react-helmet'
-import { Availability } from '../availability/availability';
+import Availability from '../availability/availability';
 import { Link } from 'react-router-dom'
+
+//Helper function imports
+import { determineProfileButton } from '../../setup/helpers';
 
 // UI Imports
 import { Grid, GridCell } from '../../ui/grid'
@@ -18,6 +21,7 @@ import { logout } from './api/actions'
 
 // Component
 const Profile = (props) => (
+  
   <div>
     {/* SEO */}
     <Helmet>
@@ -40,7 +44,7 @@ const Profile = (props) => (
         <Link to={userRoutes.subscriptions.path}>
           <Button theme="primary">Subscriptions</Button>
         </Link>
-
+        {determineProfileButton(props.user)}
         <Button theme="secondary" onClick={props.logout} style={{ marginLeft: '1em' }}>Logout</Button>
       </GridCell>
     </Grid>
