@@ -1,6 +1,6 @@
 // App Imports
 import { isEmpty } from '../../../setup/helpers'
-import { SET_USER, LOGIN_REQUEST, LOGIN_RESPONSE, LOGOUT, SET_EDIT_MODE } from './actions'
+import { SET_USER, LOGIN_REQUEST, LOGIN_RESPONSE, LOGOUT, CHANGE_EDIT_MODE } from './actions'
 
 // Initial State
 export const userInitialState = {
@@ -44,12 +44,12 @@ export default (state = userInitialState, action) => {
         details: null
       }
     
-    case SET_EDIT_MODE:
+    case CHANGE_EDIT_MODE:
       return {
         ...state,
         error: null,
         isLoading: false,
-        isEditMode: true
+        isEditMode: !action.user.isEditMode
       }
 
     default:
