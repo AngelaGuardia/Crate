@@ -144,7 +144,12 @@ export function remove(variables) {
 }
 
 //Update single date for availability
-export const updateAvailability = (date) => ({
-  type: 'UPDATE_AVAILABILITY',
-  date
-})
+export const updateAvailability = (date) => {
+  return dispatch => {
+    dispatch({
+      type: UPDATE_AVAILABILITY,
+      date
+    })
+  }
+}
+
