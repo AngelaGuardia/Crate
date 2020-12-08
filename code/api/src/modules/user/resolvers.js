@@ -68,6 +68,26 @@ export async function getAll() {
   return await models.User.findAll()
 }
 
+// Update user
+export async function update(parentValue, { id, name, email, password, image, address, description }, { auth }) {
+  if(auth.user) {
+    const updatedUser = await models.User.update(
+      {
+        name,
+        email,
+        password,
+        image,
+        address,
+        description
+      },
+      {where: {id}, returning: true}
+    )
+    return updatedUser[1][0].dataValues;
+  } else {
+    throw new Error('Operation denied.')
+  }
+}
+
 // Delete
 export async function remove(parentValue, { id }) {
   return await models.User.destroy({ where: { id } })
