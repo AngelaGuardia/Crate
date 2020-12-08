@@ -16,7 +16,7 @@ const Availability = (props) => {
       <article>
         <label htmlFor='select-availability'>
           Select Availability:
-          <input type='date' min={minDate} max={maxDate}/>
+          <input onChange={event => props.updateAvailability(event.target.value)} type='date' min={minDate} max={maxDate}/>
         </label>
       </article>
     </section>
