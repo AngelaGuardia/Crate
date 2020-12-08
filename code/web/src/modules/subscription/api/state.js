@@ -59,7 +59,8 @@ export const subscriptions = (state = subscriptionsInitialState, action) => {
 const subscriptionsByUserInitialState = {
   isLoading: false,
   error: null,
-  list: []
+  list: [],
+  dateAvailable: null
 }
 
 // State
