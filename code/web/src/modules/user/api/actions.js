@@ -11,15 +11,20 @@ export const LOGIN_REQUEST = 'AUTH/LOGIN_REQUEST'
 export const LOGIN_RESPONSE = 'AUTH/LOGIN_RESPONSE'
 export const SET_USER = 'AUTH/SET_USER'
 export const LOGOUT = 'AUTH/LOGOUT'
-export const SET_EDIT_MODE = 'AUTH/SET_EDIT_MODE'
+export const CHANGE_EDIT_MODE = 'AUTH/CHANGE_EDIT_MODE'
 
 // Actions
 
 //Set edit mode for user
 
-export const setEditMode = (user) => ({
-  type: 'SET_EDIT_MODE'
-})
+export function changeEditMode(user) {
+  return dispatch => {
+    dispatch({
+      type: CHANGE_EDIT_MODE,
+      user
+    })
+  }
+}
 
 // Set a user after login or using localStorage token
 export function setUser(token, user) {
