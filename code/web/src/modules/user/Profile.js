@@ -28,7 +28,7 @@ const Profile = (props) => {
   if (props.user.isEditMode) {
     button = <Button onClick={() => props.changeEditMode(props.user)} theme="secondary">Save Profile</Button>
   } else {
-    button = <Button theme="secondary">Edit Profile</Button>  
+    button = <Button onClick={() => props.changeEditMode(props.user)} theme="secondary">Edit Profile</Button>  
   }
 
   return (
