@@ -14,7 +14,7 @@ const Availability = (props) => {
         <h4>Available?</h4>
       </article>
       {/* refactor the following conditional render*/}
-      {props.user.isEditMode === true && 
+      {props.user.isEditMode && 
         (<article>
           <label htmlFor='select-availability'>
             Select Availability:
