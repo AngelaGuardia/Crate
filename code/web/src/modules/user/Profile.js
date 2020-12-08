@@ -5,9 +5,11 @@ import { connect } from 'react-redux'
 import { Helmet } from 'react-helmet'
 import Availability from '../availability/availability';
 import { Link } from 'react-router-dom'
+import { changeEditMode } from './api/actions';
+
 
 //Helper function imports
-import { determineProfileButton } from '../../setup/helpers';
+// import { determineProfileButton } from '../../setup/helpers';
 
 // UI Imports
 import { Grid, GridCell } from '../../ui/grid'
@@ -18,10 +20,18 @@ import { grey, grey2 } from '../../ui/common/colors'
 // App Imports
 import userRoutes from '../../setup/routes/user'
 import { logout } from './api/actions'
+import user from '../../setup/routes/user';
 
 // Component
-const Profile = (props) => (
-  
+const Profile = (props) => {
+  let button;
+  if (props.user.isEditMode) {
+    button = <Button onClick={() => props.changeEditMode(props.user)} theme="secondary">Save Profile</Button>
+  } else {
+    button = <Button theme="secondary">Edit Profile</Button>  
+  }
+
+  return (
   <div>
     {/* SEO */}
     <Helmet>
@@ -44,12 +54,13 @@ const Profile = (props) => (
         <Link to={userRoutes.subscriptions.path}>
           <Button theme="primary">Subscriptions</Button>
         </Link>
-        {determineProfileButton(props.user)}
+        {button}
         <Button theme="secondary" onClick={props.logout} style={{ marginLeft: '1em' }}>Logout</Button>
       </GridCell>
     </Grid>
   </div>
-)
+  )
+}
 
 // Component Properties
 Profile.propTypes = {
@@ -64,4 +75,4 @@ function profileState(state) {
   }
 }
 
-export default connect(profileState, { logout })(Profile)
+export default connect(profileState, { logout, changeEditMode })(Profile)
