@@ -13,14 +13,22 @@ const Availability = (props) => {
         <h3>Next Delivery: </h3>
         <h4>Available?</h4>
       </article>
-      <article>
-        <label htmlFor='select-availability'>
-          Select Availability:
-          <input onChange={event => props.updateAvailability(event.target.value)} type='date' min={minDate} max={maxDate}/>
-        </label>
-      </article>
+      {/* refactor the following conditional render*/}
+      {props.user.isEditMode === true && 
+        (<article>
+          <label htmlFor='select-availability'>
+            Select Availability:
+            <input onChange={event => props.updateAvailability(event.target.value)} type='date' min={minDate} max={maxDate}/>
+          </label>
+        </article>)}
     </section>
   )   
 }
 
-export default connect(null, { updateAvailability })(Availability)
+function availabilityState(state) {
+    return {
+      user: state.user
+    }
+  }
+
+export default connect(availabilityState, { updateAvailability })(Availability)
