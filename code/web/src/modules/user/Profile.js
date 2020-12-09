@@ -3,10 +3,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Helmet } from 'react-helmet'
-import Availability from '../availability/availability';
+// import Availability from '../availability/availability';
 import ProfileForm from '../profileForm/ProfileForm';
 import { Link } from 'react-router-dom'
-import { changeEditMode } from './api/actions';
+// import { changeEditMode } from './api/actions';
 
 
 //Helper function imports
@@ -29,7 +29,7 @@ const Profile = (props) => {
   // if (props.user.isEditMode) {
   //   button = <Button onClick={() => props.changeEditMode(props.user)} theme="secondary">Save Profile</Button>
   // } else {
-    button = <Button onClick={() => props.changeEditMode(props.user)} theme="secondary">Edit Profile</Button>  
+    // button = <Button onClick={() => props.changeEditMode(props.user)} theme="secondary">Edit Profile</Button>  
   // }
 
   return (
@@ -52,11 +52,11 @@ const Profile = (props) => {
 
         {/* <p style={{ color: grey2, marginBottom: '2em' }}>{props.user.details.email}</p> */}
         <ProfileForm />
-        <Availability />
+        
         <Link to={userRoutes.subscriptions.path}>
           <Button theme="primary">Subscriptions</Button>
         </Link>
-        {button}
+        {/* {button} */}
         <Button theme="secondary" onClick={props.logout} style={{ marginLeft: '1em' }}>Logout</Button>
       </GridCell>
     </Grid>
@@ -77,4 +77,4 @@ function profileState(state) {
   }
 }
 
-export default connect(profileState, { logout, changeEditMode })(Profile)
+export default connect(profileState, { logout })(Profile)
