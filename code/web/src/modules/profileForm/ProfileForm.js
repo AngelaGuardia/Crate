@@ -20,13 +20,18 @@ class ProfileForm extends Component{
   }
 
   updateProfileState(e) {
-    console.log('this, updateProfileState', this)
     this.setState({ [e.target.name]: e.target.value })
   }
 
-  updateProfile() {
-    saveProfile(this.state)
-    changeEditMode(this.props.user)
+  updateProfile = () => {
+    let newState = {
+          img: this.state.img || this.props.user.details.img || '',
+          address: this.state.address || this.props.user.details.address || '',
+          email: this.state.email || this.props.user.details.email || '',
+          description: this.state.description || this.props.user.details.description || ''
+        }
+    this.props.saveProfile(newState)
+    this.props.changeEditMode(this.props.user)
   }
 
   render() {
@@ -36,10 +41,10 @@ class ProfileForm extends Component{
           (
             <article>  
               {/* look into image file/upload */}
-              <input onChange={e => this.updateProfileState(e)} name='img' value={this.props.user.details.img} />
-              <input onChange={e => this.updateProfileState(e)} name='address' value={this.props.user.details.address} />
-              <input onChange={e => this.updateProfileState(e)} name='email' value={this.props.user.details.email} />
-              <input onChange={e => this.updateProfileState(e)} name='description' value={this.props.user.details.description} />
+              <input onChange={e => this.updateProfileState(e)} name='img' placeholder={this.props.user.details.img || 'no image'} value={this.state.img} />
+              <input onChange={e => this.updateProfileState(e)} name='address' placeholder={this.props.user.details.address || 'no address'} value={this.state.address} />
+              <input onChange={e => this.updateProfileState(e)} name='email'  placeholder={this.props.user.details.email || 'no email'} value={this.state.email} />
+              <input onChange={e => this.updateProfileState(e)} name='description' placeholder={this.props.user.details.description || 'no description'} value={this.state.description} />
               {/* change the name of changeEditMode or use conditionals */}
               <Button onClick={this.updateProfile} theme="secondary">Save Profile</Button>
             </article>
