@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import Button from '../../ui/button';
 import { saveProfile } from '../user/api/actions';
 import { changeEditMode } from '../user/api/actions';
+import Availability from '../availability/Availability';
+
 
 // import { updateAvailability } from '../subscription/api/actions';
 
@@ -41,10 +43,22 @@ class ProfileForm extends Component{
           (
             <article>  
               {/* look into image file/upload */}
-              <input onChange={e => this.updateProfileState(e)} name='img' placeholder={this.props.user.details.img || 'no image'} value={this.state.img} />
-              <input onChange={e => this.updateProfileState(e)} name='address' placeholder={this.props.user.details.address || 'no address'} value={this.state.address} />
-              <input onChange={e => this.updateProfileState(e)} name='email'  placeholder={this.props.user.details.email || 'no email'} value={this.state.email} />
-              <input onChange={e => this.updateProfileState(e)} name='description' placeholder={this.props.user.details.description || 'no description'} value={this.state.description} />
+              <label htmlFor='img-input'>
+                Image
+                <input id='img-input' style={{display: 'block'}} onChange={e => this.updateProfileState(e)} name='img' placeholder={this.props.user.details.img || 'no image'} value={this.state.img} />
+              </label>
+              <label htmlFor='address-input'>
+                Address
+                <input id='address-input' style={{display: 'block'}} onChange={e => this.updateProfileState(e)} name='address' placeholder={this.props.user.details.address || 'no address'} value={this.state.address} />
+              </label>
+              <label htmlFor='email-input'>
+                Email
+                <input id='email-input' style={{display: 'block'}} onChange={e => this.updateProfileState(e)} name='email'  placeholder={this.props.user.details.email || 'no email'} value={this.state.email} />
+              </label>
+              <label htmlFor='description-input'>
+                Description
+                <input id='description-input' style={{display: 'block'}} onChange={e => this.updateProfileState(e)} name='description' placeholder={this.props.user.details.description || 'no description'} value={this.state.description} />
+              </label>
               {/* change the name of changeEditMode or use conditionals */}
               <Button onClick={this.updateProfile} theme="secondary">Save Profile</Button>
             </article>
@@ -52,11 +66,13 @@ class ProfileForm extends Component{
           (
             <article>  
               <img src={this.props.user.details.img}></img>
-              <p>{this.props.user.details.address}</p>
-              <p>{this.props.user.details.email}</p>
-              <p>{this.props.user.details.description}</p>
+              <p>Address: {this.props.user.details.address}</p>
+              <p>Email: {this.props.user.details.email}</p>
+              <p>Description: {this.props.user.details.description}</p>
+              <Button onClick={() => this.props.changeEditMode(this.props.user)} theme="secondary">Edit Profile</Button>
             </article>
           )}
+          <Availability />
         </section>
       )   
     }
