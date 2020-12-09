@@ -63,7 +63,7 @@ export default (state = userInitialState, action) => {
         error: null,
         isLoading: false,
         details: {
-          ...details,
+          ...state.details,
           email: action.email,
           img: action.img,
           description: action.description,
