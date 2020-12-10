@@ -38,47 +38,53 @@ class ProfileForm extends Component{
 
   render() {
       return (
-        <section style={{ display: 'flex', justifyContent: 'center' }}>
+        <section style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', padding: '2em'}}>
         {this.props.user.isEditMode ?
           (
-            <article>  
+            <article style={{ display: 'flex', flexDirection: 'row', padding: '2em', height: '15em'  }}>  
               {/* look into image file/upload */}
               <label htmlFor='img-input'>
                 Image
                 <input id='img-input' style={{display: 'block'}} onChange={e => this.updateProfileState(e)} name='img' placeholder={this.props.user.details.img || 'no image'} value={this.state.img} />
               </label>
-              <label htmlFor='address-input'>
-                Address
-                <input id='address-input' style={{display: 'block'}} onChange={e => this.updateProfileState(e)} name='address' placeholder={this.props.user.details.address || 'no address'} value={this.state.address} />
-              </label>
-              <label htmlFor='email-input'>
-                Email
-                <input id='email-input' style={{display: 'block'}} onChange={e => this.updateProfileState(e)} name='email'  placeholder={this.props.user.details.email || 'no email'} value={this.state.email} />
-              </label>
+              <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', paddingLeft: '2em', paddingRight: '2em' }}>
+                <label htmlFor='address-input'>
+                  Address
+                  <input id='address-input' style={{ display: 'block'}} onChange={e => this.updateProfileState(e)} name='address' placeholder={this.props.user.details.address || 'no address'} value={this.state.address} />
+                </label>
+                <label htmlFor='email-input' style={{ display: 'block', margin: '2em' }}>
+                  Email
+                  <input id='email-input' style={{ display: 'block' }} onChange={e => this.updateProfileState(e)} name='email'  placeholder={this.props.user.details.email || 'no email'} value={this.state.email} />
+                </label>
+              <Availability />
+              </div>
               <label htmlFor='description-input'>
                 Description
                 <input id='description-input' style={{display: 'block'}} onChange={e => this.updateProfileState(e)} name='description' placeholder={this.props.user.details.description || 'no description'} value={this.state.description} />
               </label>
               {/* change the name of changeEditMode or use conditionals */}
-              <Button onClick={this.updateProfile} theme="secondary">Save Profile</Button>
             </article>
           ) :
           (
-            <article>  
-              <img src={this.props.user.details.img}></img>
-              <p>Address: {this.props.user.details.address}</p>
-              <p>Email: {this.props.user.details.email}</p>
-              <p>Description: {this.props.user.details.description}</p>
-              <Button onClick={() => this.props.changeEditMode(this.props.user)} theme="secondary">Edit Profile</Button>
+            <article style={{ display: 'flex', flexDirection: 'row', padding: '2em', height: '15em'  }}>  
+              <img style={{ width: '10em', height: '15em', objectFit: 'cover' }} src={this.props.user.details.img}></img>
+              <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', paddingLeft: '2em', paddingRight: '2em' }}>
+                <p>Address: {this.props.user.details.address}</p>
+                <p style={{ display: 'block', margin: '2em' }}>Email: {this.props.user.details.email}</p>
+                <Availability />
+              </div>
+              <p style={{ width: '10em', height: 'auto', border: '1px solid black', overflow: 'scroll' }}>Description: {this.props.user.details.description}</p>
             </article>
           )}
-          <Availability />
+          {this.props.user.isEditMode ?
+          <Button onClick={this.updateProfile} theme="secondary">Save Profile</Button> :
+          <Button onClick={() => this.props.changeEditMode(this.props.user)} theme="secondary">Edit Profile</Button>}
         </section>
       )   
     }
   }
-
-function profileFormState(state) {
+  
+  function profileFormState(state) {
     return {
       user: state.user
     }
