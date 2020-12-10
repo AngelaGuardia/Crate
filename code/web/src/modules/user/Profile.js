@@ -25,13 +25,6 @@ import user from '../../setup/routes/user';
 
 // Component
 const Profile = (props) => {
-  let button;
-  // if (props.user.isEditMode) {
-  //   button = <Button onClick={() => props.changeEditMode(props.user)} theme="secondary">Save Profile</Button>
-  // } else {
-    // button = <Button onClick={() => props.changeEditMode(props.user)} theme="secondary">Edit Profile</Button>  
-  // }
-
   return (
   <div>
     {/* SEO */}
