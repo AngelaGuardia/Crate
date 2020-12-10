@@ -63,7 +63,7 @@ const Header = (props) => {
 
                 <MenuItem to={user.profile.path}>Profile</MenuItem>
 
-                <MenuItem onClick={props.getProductsHistory()} to={user.history.path}>History</MenuItem>
+                <MenuItem to={user.history.path}><h1 onClick={props.getProductsHistory}>History</h1></MenuItem>
               </Menu>
               :
               <Menu>
