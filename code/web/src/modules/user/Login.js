@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Link, withRouter } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
+// import { useQuery, gql } from '@apollo/client';
 
 // UI Imports
 import { Grid, GridCell } from '../../ui/grid'
@@ -31,7 +32,7 @@ class Login extends Component {
     this.state = {
       user: {
         email: '',
-        password: '',
+        password: ''
       }
     }
 
