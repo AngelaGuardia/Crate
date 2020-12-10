@@ -3,9 +3,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Helmet } from 'react-helmet'
-import Availability from '../availability/availability';
+// import Availability from '../availability/availability';
+import ProfileForm from '../profileForm/ProfileForm';
 import { Link } from 'react-router-dom'
-import { changeEditMode } from './api/actions';
+// import { changeEditMode } from './api/actions';
 
 
 //Helper function imports
@@ -25,11 +26,11 @@ import user from '../../setup/routes/user';
 // Component
 const Profile = (props) => {
   let button;
-  if (props.user.isEditMode) {
-    button = <Button onClick={() => props.changeEditMode(props.user)} theme="secondary">Save Profile</Button>
-  } else {
-    button = <Button onClick={() => props.changeEditMode(props.user)} theme="secondary">Edit Profile</Button>  
-  }
+  // if (props.user.isEditMode) {
+  //   button = <Button onClick={() => props.changeEditMode(props.user)} theme="secondary">Save Profile</Button>
+  // } else {
+    // button = <Button onClick={() => props.changeEditMode(props.user)} theme="secondary">Edit Profile</Button>  
+  // }
 
   return (
   <div>
@@ -49,12 +50,13 @@ const Profile = (props) => {
       <GridCell style={{ padding: '2em', textAlign: 'center' }}>
         <H4 style={{ marginBottom: '0.5em' }}>{props.user.details.name}</H4>
 
-        <p style={{ color: grey2, marginBottom: '2em' }}>{props.user.details.email}</p>
-        <Availability />
+        {/* <p style={{ color: grey2, marginBottom: '2em' }}>{props.user.details.email}</p> */}
+        <ProfileForm />
+        
         <Link to={userRoutes.subscriptions.path}>
           <Button theme="primary">Subscriptions</Button>
         </Link>
-        {button}
+        {/* {button} */}
         <Button theme="secondary" onClick={props.logout} style={{ marginLeft: '1em' }}>Logout</Button>
       </GridCell>
     </Grid>
@@ -75,4 +77,4 @@ function profileState(state) {
   }
 }
 
-export default connect(profileState, { logout, changeEditMode })(Profile)
+export default connect(profileState, { logout })(Profile)
