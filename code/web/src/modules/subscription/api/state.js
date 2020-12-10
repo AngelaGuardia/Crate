@@ -11,6 +11,7 @@ import {
   SUBSCRIPTIONS_GET_REQUEST,
   SUBSCRIPTIONS_GET_RESPONSE,
   SUBSCRIPTIONS_GET_FAILURE,
+  UPDATE_AVAILABILITY
 } from './actions'
 
 // Subscriptions list
@@ -58,7 +59,8 @@ export const subscriptions = (state = subscriptionsInitialState, action) => {
 const subscriptionsByUserInitialState = {
   isLoading: false,
   error: null,
-  list: []
+  list: [],
+  dateAvailable: null
 }
 
 // State
@@ -84,6 +86,13 @@ export const subscriptionsByUser = (state = subscriptionsByUserInitialState, act
         ...state,
         isLoading: false,
         error: action.error
+      }
+    
+    case UPDATE_AVAILABILITY:
+      return {
+        ...state,
+        isLoading: false,
+        dateAvailable: action.date
       }
 
     default:

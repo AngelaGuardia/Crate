@@ -11,8 +11,21 @@ export const LOGIN_REQUEST = 'AUTH/LOGIN_REQUEST'
 export const LOGIN_RESPONSE = 'AUTH/LOGIN_RESPONSE'
 export const SET_USER = 'AUTH/SET_USER'
 export const LOGOUT = 'AUTH/LOGOUT'
+export const CHANGE_EDIT_MODE = 'AUTH/CHANGE_EDIT_MODE'
+export const SAVE_PROFILE = 'AUTH/SAVE_PROFILE'
 
 // Actions
+
+//Set edit mode for user
+
+export function changeEditMode(user) {
+  return dispatch => {
+    dispatch({
+      type: CHANGE_EDIT_MODE,
+      user
+    })
+  }
+}
 
 // Set a user after login or using localStorage token
 export function setUser(token, user) {
@@ -23,6 +36,18 @@ export function setUser(token, user) {
   }
 
   return { type: SET_USER, user }
+}
+
+export function saveProfile(updatedDetails) {
+  return dispatch => {
+    dispatch({
+      type: SAVE_PROFILE,
+      email: updatedDetails.email,
+      img: updatedDetails.img,
+      description: updatedDetails.description,
+      address: updatedDetails.address
+    })
+  }
 }
 
 // Login a user using credentials
@@ -117,3 +142,4 @@ export function getGenders() {
     }))
   }
 }
+ 
