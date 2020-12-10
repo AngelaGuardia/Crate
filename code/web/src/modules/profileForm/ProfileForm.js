@@ -27,6 +27,7 @@ class ProfileForm extends Component{
 
   updateProfile = () => {
     let newState = {
+          id: this.props.user.details.id,
           image: this.state.img || this.props.user.details.img || '',
           address: this.state.address || this.props.user.details.address || '',
           email: this.state.email || this.props.user.details.email || '',
