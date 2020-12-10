@@ -51,6 +51,21 @@ export async function create(parentValue, { crateId }, { auth }) {
   }
 }
 
+// Update subscription
+export async function update(parentValue, { id, nextDeliveryDate }, { auth }) {
+  if(auth.user) {
+    const updatedSubscription = await models.Subscription.update(
+      {
+        nextDeliveryDate
+      },
+      {where: {id}, returning: true}
+    )
+    return updatedSubscription[1][0].dataValues;
+  } else {
+    throw new Error('Operation denied.')
+  }
+}
+
 // Delete subscription
 export async function remove(parentValue, { id }, { auth }) {
   if(auth.user && auth.user.id > 0) {
