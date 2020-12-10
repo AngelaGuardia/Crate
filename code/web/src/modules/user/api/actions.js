@@ -40,10 +40,15 @@ export function setUser(token, user) {
 
 export function saveProfile(updatedDetails) {
   return dispatch => {
+    axios.post(routeApi, mutation({
+      operation: 'userUpdate',
+      variables: updatedDetails,
+      fields: ['user {email, image, description, address}']
+    }))
     dispatch({
       type: SAVE_PROFILE,
       email: updatedDetails.email,
-      img: updatedDetails.img,
+      img: updatedDetails.image,
       description: updatedDetails.description,
       address: updatedDetails.address
     })
