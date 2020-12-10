@@ -67,7 +67,7 @@ class ProfileForm extends Component{
           ) :
           (
             <article style={{ display: 'flex', flexDirection: 'row', padding: '2em', height: '15em'  }}>  
-              <img src={this.props.user.details.img}></img>
+              <img style={{ width: '10em', height: '15em', objectFit: 'cover' }} src={this.props.user.details.img}></img>
               <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', paddingLeft: '2em', paddingRight: '2em' }}>
                 <p>Address: {this.props.user.details.address}</p>
                 <p style={{ display: 'block', margin: '2em' }}>Email: {this.props.user.details.email}</p>
