@@ -67,13 +67,13 @@ class ProfileForm extends Component{
           ) :
           (
             <article style={{ display: 'flex', flexDirection: 'row', padding: '2em', height: '15em'  }}>  
-              <img src={this.props.user.details.img}>Image: </img>
+              <img src={this.props.user.details.img}></img>
               <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', paddingLeft: '2em', paddingRight: '2em' }}>
                 <p>Address: {this.props.user.details.address}</p>
                 <p style={{ display: 'block', margin: '2em' }}>Email: {this.props.user.details.email}</p>
                 <Availability />
               </div>
-              <p>Description: {this.props.user.details.description}</p>
+              <p style={{ width: '10em', height: 'auto', border: '1px solid black', overflow: 'scroll' }}>Description: {this.props.user.details.description}</p>
             </article>
           )}
           {this.props.user.isEditMode ?
