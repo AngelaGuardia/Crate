@@ -43,7 +43,7 @@ export function saveProfile(updatedDetails) {
     axios.post(routeApi, mutation({
       operation: 'userUpdate',
       variables: updatedDetails,
-      fields: ['user {email, image, description, address}']
+      fields: ['id']
     }))
     dispatch({
       type: SAVE_PROFILE,
@@ -66,7 +66,7 @@ export function login(userCredentials, isLoading = true) {
     return axios.post(routeApi, query({
       operation: 'userLogin',
       variables: userCredentials,
-      fields: ['user {name, email, role}', 'token']
+      fields: ['user {name, email, role, id}', 'token']
     }))
       .then(response => {
         let error = ''
