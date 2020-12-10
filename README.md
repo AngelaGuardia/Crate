@@ -108,7 +108,7 @@ Click on image to view fullscreen and zoom
 - Setup
   - API: Install packages and database setup (migrations and seed) `cd api` and `npm run setup`
   - Webapp: Install packages `cd web` and `npm install`
-  - Mobile: 
+  - Mobile:
     1. Install packages `cd mobile` and `npm install`
     2. Install iOS dependencies `cd mobile/ios` `pod install`
 - Development
@@ -179,3 +179,18 @@ Looking for a developer to build your next idea or need a developer to work remo
 Copyright (c) 2018 Atul Yadav http://github.com/atulmy
 
 The MIT License (http://www.opensource.org/licenses/mit-license.php)
+
+# Our README
+
+## Testing
+
+Run the following commands to run BE tests:
+- run `npm install`
+- Navigate into the api directory
+- To set up the test DB run:
+  - `psql`
+  - `CREATE DATABASE crate_testing;`
+  - `quit`
+  - `NODE_ENV=test ./node_modules/.bin/sequelize db:migrate`
+  - `NODE_ENV=test ./node_modules/.bin/sequelize db:seed:all`
+- Run tests: `npm run test:watch`
