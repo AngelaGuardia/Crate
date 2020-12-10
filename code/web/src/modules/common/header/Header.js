@@ -10,6 +10,7 @@ import { primary as primaryGradient } from '../../../ui/common/gradients'
 import { level1 } from '../../../ui/common/shadows'
 
 // App Imports
+import { getProductsHistory } from '../../user/api/actions'
 import home from '../../../setup/routes/home'
 import user from '../../../setup/routes/user'
 import crate from '../../../setup/routes/crate'
@@ -62,7 +63,7 @@ const Header = (props) => {
 
                 <MenuItem to={user.profile.path}>Profile</MenuItem>
 
-                <MenuItem to={user.history.path}>History</MenuItem>
+                <MenuItem onClick={props.getProductsHistory()} to={user.history.path}>History</MenuItem>
               </Menu>
               :
               <Menu>
@@ -89,4 +90,4 @@ function headerState(state) {
   }
 }
 
-export default withRouter(connect(headerState, {})(Header))
+export default withRouter(connect(headerState, { getProductsHistory })(Header))
