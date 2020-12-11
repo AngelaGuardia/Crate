@@ -41,7 +41,7 @@ class ProfileForm extends Component{
       id: this.props.subscriptionsByUser.list[0].id,
       nextDeliveryDate: this.props.subscriptionsByUser.nextDeliveryDate
     }
-    this.props.saveProfile(newState, newDate)
+    this.props.saveProfile(newState, newDate, this.props.subscriptionsByUser.list.map(x => x.id))
     this.props.changeEditMode(this.props.user)
   }
 
