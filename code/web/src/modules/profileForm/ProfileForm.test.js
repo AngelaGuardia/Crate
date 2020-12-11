@@ -30,6 +30,13 @@ describe('ProfileForm', () => {
     expect(profileEditModeTest).toBeInTheDocument();
     expect(profileSaveButtonTest).toBeInTheDocument();
 
+    // sad paths
+    
+    const profileSaveModeTest = screen.queryByTestId('profile-save-mode');
+    const profileEditButtonTest = screen.queryByTestId('profile-edit-button');
+
+    expect(profileSaveModeTest).toEqual(null);
+    expect(profileEditButtonTest).toEqual(null);
 
     screen.debug()
   })
