@@ -33,7 +33,11 @@ class ProfileForm extends Component{
           email: this.state.email || this.props.user.details.email || '',
           description: this.state.description || this.props.user.details.description || ''
         }
-    this.props.saveProfile(newState, this.props.subscriptionsByUser)
+    let newDate = {
+      id: this.props.subscriptionsByUser.list[0].id,
+      nextDeliveryDate: this.props.subscriptionsByUser.nextDeliveryDate
+    }
+    this.props.saveProfile(newState, newDate)
     this.props.changeEditMode(this.props.user)
   }
 
@@ -87,7 +91,8 @@ class ProfileForm extends Component{
   
   function profileFormState(state) {
     return {
-      user: state.user
+      user: state.user,
+      subscriptionsByUser: state.subscriptionsByUser
     }
   }
 
