@@ -33,7 +33,7 @@ export const userUpdate = {
   args: {
     id: {
       name: 'id',
-      type: GraphQLNonNull(GraphQLInt)
+      type: GraphQLInt
     },
 
     name: {
