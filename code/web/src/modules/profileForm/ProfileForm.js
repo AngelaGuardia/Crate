@@ -5,6 +5,7 @@ import Button from '../../ui/button';
 import { saveProfile } from '../user/api/actions';
 import { changeEditMode } from '../user/api/actions';
 import Availability from '../availability/Availability';
+import { getListByUser } from '../subscription/api/actions'
 
 
 // import { updateAvailability } from '../subscription/api/actions';
@@ -19,6 +20,9 @@ class ProfileForm extends Component{
         email: '',
         description: ''
       }
+  }
+  componentDidMount() {
+    this.props.getListByUser()
   }
 
   updateProfileState(e) {
@@ -97,7 +101,7 @@ class ProfileForm extends Component{
   }
 
 
-export default connect(profileFormState, { saveProfile, changeEditMode })(ProfileForm)
+export default connect(profileFormState, { getListByUser, saveProfile, changeEditMode })(ProfileForm)
 
 /*
 this.state = {
