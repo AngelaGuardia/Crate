@@ -36,12 +36,34 @@ export function getProductsHistory() {
       {
         productsHistory: [
           {
-            productID: 1,
-            productName: 'hello'
+            id: 1,
+            userId: 1,
+            productId: 3,
+            kept: false
           },
           {
-            productID: 2,
-            productName: 'goodbye'
+            id: 2,
+            userId: 1,
+            productId: 6,
+            kept: true
+          },
+          {
+            id: 3,
+            userId: 1,
+            productId: 4,
+            kept: true
+          },
+          {
+            id: 4,
+            userId: 1,
+            productId: 1,
+            kept: false
+          },
+          {
+            id: 5,
+            userId: 1,
+            productId: 9,
+            kept: true
           }
         ]
       }
