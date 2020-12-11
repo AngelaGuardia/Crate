@@ -39,6 +39,19 @@ export function setUser(token, user) {
 }
 
 export function saveProfile(updatedDetails, subDetails, userSubs) {
+  if (subDetails.nextDeliveryDate) {
+    userSubs.forEach((sub) => {
+      subDetails.id = sub
+      axios.post(
+        routeApi,
+        mutation({
+          operation: "subscriptionUpdate",
+          variables: subDetails,
+          fields: ["id"],
+        })
+      );
+    });
+  }
   return (dispatch) => {
     axios.post(
       routeApi,
