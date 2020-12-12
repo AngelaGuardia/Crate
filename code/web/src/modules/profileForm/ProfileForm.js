@@ -7,9 +7,6 @@ import { changeEditMode } from '../user/api/actions';
 import Availability from '../availability/Availability';
 import { getListByUser } from '../subscription/api/actions'
 
-
-// import { updateAvailability } from '../subscription/api/actions';
-
 class ProfileForm extends Component{
   constructor(props) {
     super(props)
@@ -101,5 +98,9 @@ class ProfileForm extends Component{
   }
 
 
+<<<<<<< HEAD
 export default connect(profileFormState, { getListByUser, saveProfile, changeEditMode })(ProfileForm)
 
+=======
+export default connect(profileFormState, { saveProfile, changeEditMode })(ProfileForm)
+>>>>>>> Remove comments
