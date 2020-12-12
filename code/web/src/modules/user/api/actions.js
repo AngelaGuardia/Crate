@@ -2,6 +2,7 @@
 import axios from "axios";
 import { query, mutation } from "gql-query-builder";
 import cookie from "js-cookie";
+import { deliveries } from "../../../../../api/src/modules/delivery/query";
 
 // App Imports
 import { routeApi } from "../../../setup/routes";
@@ -32,45 +33,55 @@ export function changeEditMode(user) {
 export function getProductsHistory() {
   return dispatch => {
 
-    const productsHistory = 
-      {
-        productsHistory: [
-          {
-            id: 1,
-            userId: 1,
-            productId: 3,
-            kept: false
-          },
-          {
-            id: 2,
-            userId: 1,
-            productId: 6,
-            kept: true
-          },
-          {
-            id: 3,
-            userId: 1,
-            productId: 4,
-            kept: true
-          },
-          {
-            id: 4,
-            userId: 1,
-            productId: 1,
-            kept: false
-          },
-          {
-            id: 5,
-            userId: 1,
-            productId: 9,
-            kept: true
-          }
-        ]
-      }
-    
+    // const productsHistory = 
+      // {
+      //   productsHistory: [
+      //     {
+      //       id: 1,
+      //       userId: 1,
+      //       productId: 3,
+      //       kept: false
+      //     },
+      //     {
+      //       id: 2,
+      //       userId: 1,
+      //       productId: 6,
+      //       kept: true
+      //     },
+      //     {
+      //       id: 3,
+      //       userId: 1,
+      //       productId: 4,
+      //       kept: true
+      //     },
+      //     {
+      //       id: 4,
+      //       userId: 1,
+      //       productId: 1,
+      //       kept: false
+      //     },
+      //     {
+      //       id: 5,
+      //       userId: 1,
+      //       productId: 9,
+      //       kept: true
+      //     }
+      //   ]
+      // }
+      let deliveries;
+      let products;
+      axios.post(routeApi, query({
+        operation: 'deliveries',
+        fields: ['id', 'product', 'user', 'kept']
+      })).then(response => deliveries = response)
+      axios.post(routeApi, query({
+        operation: 'products',
+        fields: ['id', 'name', 'slug', 'description', 'image', 'createdAt', 'updatedAt']
+      })).then(response => products = response)
       dispatch({
       type: GET_PRODUCTS_HISTORY,
-      productsHistory: productsHistory
+      deliveries: deliveries,
+      products: products
     })
   }
 }
