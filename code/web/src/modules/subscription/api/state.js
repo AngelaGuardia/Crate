@@ -92,7 +92,7 @@ export const subscriptionsByUser = (state = subscriptionsByUserInitialState, act
       return {
         ...state,
         isLoading: false,
-        dateAvailable: action.date
+        nextDeliveryDate: action.date
       }
 
     default:

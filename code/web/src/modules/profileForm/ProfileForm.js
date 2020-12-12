@@ -5,6 +5,7 @@ import Button from '../../ui/button';
 import { saveProfile } from '../user/api/actions';
 import { changeEditMode } from '../user/api/actions';
 import Availability from '../availability/Availability';
+import { getListByUser } from '../subscription/api/actions'
 
 
 // import { updateAvailability } from '../subscription/api/actions';
@@ -20,6 +21,9 @@ class ProfileForm extends Component{
         description: ''
       }
   }
+  componentDidMount() {
+    this.props.getListByUser()
+  }
 
   updateProfileState(e) {
     this.setState({ [e.target.name]: e.target.value })
@@ -27,12 +31,17 @@ class ProfileForm extends Component{
 
   updateProfile = () => {
     let newState = {
-          img: this.state.img || this.props.user.details.img || '',
+          id: this.props.user.details.id,
+          image: this.state.img || this.props.user.details.img || '',
           address: this.state.address || this.props.user.details.address || '',
           email: this.state.email || this.props.user.details.email || '',
           description: this.state.description || this.props.user.details.description || ''
         }
-    this.props.saveProfile(newState)
+    let newDate = {
+      id: this.props.subscriptionsByUser.list[0].id,
+      nextDeliveryDate: this.props.subscriptionsByUser.nextDeliveryDate
+    }
+    this.props.saveProfile(newState, newDate, this.props.subscriptionsByUser.list.map(x => x.id))
     this.props.changeEditMode(this.props.user)
   }
 
@@ -86,18 +95,11 @@ class ProfileForm extends Component{
   
   function profileFormState(state) {
     return {
-      user: state.user
+      user: state.user,
+      subscriptionsByUser: state.subscriptionsByUser
     }
   }
 
 
-export default connect(profileFormState, { saveProfile, changeEditMode })(ProfileForm)
+export default connect(profileFormState, { getListByUser, saveProfile, changeEditMode })(ProfileForm)
 
-/*
-this.state = {
-  img: '',
-  address: '',
-  email: '',
-  bio: ''
-}
-*/

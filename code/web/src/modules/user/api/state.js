@@ -1,6 +1,6 @@
 // App Imports
 import { isEmpty } from '../../../setup/helpers'
-import { SET_USER, LOGIN_REQUEST, LOGIN_RESPONSE, LOGOUT, CHANGE_EDIT_MODE, SAVE_PROFILE } from './actions'
+import { SET_USER, LOGIN_REQUEST, LOGIN_RESPONSE, LOGOUT, CHANGE_EDIT_MODE, SAVE_PROFILE, GET_PRODUCTS_HISTORY } from './actions'
 
 // Initial State
 export const userInitialState = {
@@ -69,6 +69,13 @@ export default (state = userInitialState, action) => {
           description: action.description,
           address: action.address
         }
+      }
+
+    case GET_PRODUCTS_HISTORY:
+      return {
+        ...state,
+        deliveries: action.deliveries.data.data.deliveries,
+        products: action.products.data.data.products
       }
 
     default:

@@ -23,7 +23,7 @@ export const subscriptionUpdate = {
   args: {
     id: {
       name: 'id',
-      type: GraphQLNonNull(GraphQLInt)
+      type: GraphQLInt
     },
     nextDeliveryDate: {
       name: 'nextDeliveryDate',
