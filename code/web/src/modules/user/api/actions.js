@@ -31,56 +31,19 @@ export function changeEditMode(user) {
 //Set product history
 export function getProductsHistory() {
   return dispatch => {
-
-    // const productsHistory = 
-      // {
-      //   productsHistory: [
-      //     {
-      //       id: 1,
-      //       userId: 1,
-      //       productId: 3,
-      //       kept: false
-      //     },
-      //     {
-      //       id: 2,
-      //       userId: 1,
-      //       productId: 6,
-      //       kept: true
-      //     },
-      //     {
-      //       id: 3,
-      //       userId: 1,
-      //       productId: 4,
-      //       kept: true
-      //     },
-      //     {
-      //       id: 4,
-      //       userId: 1,
-      //       productId: 1,
-      //       kept: false
-      //     },
-      //     {
-      //       id: 5,
-      //       userId: 1,
-      //       productId: 9,
-      //       kept: true
-      //     }
-      //   ]
-      // }
-      let deliveries;
-      let products;
-      axios.post(routeApi, query({
-        operation: 'deliveries',
-        fields: ['id', 'product', 'user', 'kept']
-      })).then(response => deliveries = response)
-      axios.post(routeApi, query({
-        operation: 'products',
-        fields: ['id', 'name', 'slug', 'description', 'image', 'createdAt', 'updatedAt']
-      })).then(response => products = response)
-      dispatch({
+    let deliveries, products;
+    axios.post(routeApi, query({
+      operation: 'deliveries',
+      fields: ['user{id}', 'product{id}', 'id', 'kept']
+    })).then(response => deliveries = response)
+    axios.post(routeApi, query({
+      operation: 'products',
+      fields: ['id', 'name', 'slug', 'description', 'image', 'createdAt', 'updatedAt']
+    })).then(response => products = response)
+    dispatch({
       type: GET_PRODUCTS_HISTORY,
-      deliveries: deliveries,
-      products: products
+      deliveries,
+      products
     })
   }
 }
