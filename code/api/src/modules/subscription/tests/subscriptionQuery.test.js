@@ -25,7 +25,7 @@ describe('Subscription Queries', () => {
     done();
   })
 
-  // it('returns a subscription by user', async(done) => {
+  // it.skip('returns a subscription by user', async(done) => {
   //   const response = await request(server)
   //     .post('/graphql')
   //     .send({query: `{subscription(auth) { id } }`})
