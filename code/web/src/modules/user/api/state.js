@@ -74,8 +74,8 @@ export default (state = userInitialState, action) => {
     case GET_PRODUCTS_HISTORY:
       return {
         ...state,
-        deliveries: action.deliveries,
-        products: action.products
+        deliveries: action.deliveries.data.data.deliveries,
+        products: action.products.data.data.products
       }
 
     default:
