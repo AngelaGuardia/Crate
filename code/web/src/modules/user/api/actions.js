@@ -2,7 +2,6 @@
 import axios from "axios";
 import { query, mutation } from "gql-query-builder";
 import cookie from "js-cookie";
-import { deliveries } from "../../../../../api/src/modules/delivery/query";
 
 // App Imports
 import { routeApi } from "../../../setup/routes";
