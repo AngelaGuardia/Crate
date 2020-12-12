@@ -10,7 +10,7 @@ const History = (props) => {
   useEffect(() => {
     props.getListByUser()
 }, []);
-  let allProducts, keptProducts, userProds, keptProds, upcomingProducts;
+  let allProducts, keptProducts, userProds, keptProds;
   const [keptView, toggleKeptView] = useState(false)
   if (props.deliveries){
   let historyIds = props.deliveries.filter(prod => prod.user.id === props.userId)
@@ -32,21 +32,9 @@ const History = (props) => {
                   <img src={routeImage + prod.image} alt={prod.description} style={{ width: '100%' }}/>
                   <h3>{prod.description}</h3>
                 </article>)})
-  upcomingProducts=
-        keptProds.map(prod => {
-          return (<article style={{  border:'solid',  width:"10em", marginRight:"1em"}}>
-                  <h3>{prod.name}</h3>
-                  <img src={routeImage + prod.image} alt={prod.description} style={{ width: '100%' }}/>
-                  <h3>{prod.description}</h3>
-                </article>)})
   }
   const toggleKept = ()=>{
     toggleKeptView( !keptView )
-  }
-  const determineUpcoming = ()=>{
-    let today = Date.now()
-    let upcoming = props.subscriptionsByUser.list.filter(subscription => today < subscription.nextDeliveryDate)
-    console.log(upcoming)
   }
   return (
     <section style={{ textAlign: 'center', display: 'flex', flexDirection: "column", alignItems:"center", gridTemplateRows: '1fr 1fr 1fr', justifyContent:'center', paddingTop: '5em' }}>
@@ -54,7 +42,6 @@ const History = (props) => {
       <section style={{display:"flex", flexDirection:"row"}}>{keptView ? keptProducts : allProducts}</section>
       <article style={{ marginTop: '5em', gridRowStart: '3', display: 'flex', justifyContent: 'space-around' }}> 
         <Button onClick={toggleKept}theme='secondary'>{keptView ? "All": "Kept"}</Button>
-        <Button onClick={determineUpcoming}theme='secondary'>Upcoming</Button>
       </article>
     </section>
   )
