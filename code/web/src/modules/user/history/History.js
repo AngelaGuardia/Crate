@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import { connect } from 'react-redux';
 import Button from '../../../ui/button/Button';
+import { routeImage, routes } from '../../../setup/routes'
 
 
 const History = (props) => {
@@ -11,26 +12,30 @@ const History = (props) => {
   let userProds = props.products.filter(prod => historyIds.some(id => id.id === prod.id))
   let keptDelivery = historyIds.filter(prod => prod.kept)
   let keptProds = props.products.filter(prod => keptDelivery.some(delivery => delivery.id === prod.id))
-    console.log(userProds, keptProds)
+    console.log(keptProds)
   allProducts=
         userProds.map(prod => {
-        return (<article style={{ gridRowStart: '2' }}>
-                  <h3>{prod.slug}</h3>
+          return (<article style={{ border:'solid', width:"10em", marginRight:"1em"}}>
+                  <h3>{prod.name}</h3>
+                  <img src={routeImage + prod.image} alt={prod.description} style={{ width: '100%' }}/>
+                  <h3>{prod.description}</h3>
                 </article>)})
 
   keptProducts=
         keptProds.map(prod => {
-        return (<article style={{ gridRowStart: '2' }}>
-                  <h3>{prod.slug}</h3>
+          return (<article style={{  border:'solid',  width:"10em", marginRight:"1em"}}>
+                  <h3>{prod.name}</h3>
+                  <img src={routeImage + prod.image} alt={prod.description} style={{ width: '100%' }}/>
+                  <h3>{prod.description}</h3>
                 </article>)})
   }
   const toggleKept = ()=>{
     toggleKeptView( !keptView )
   }
   return (
-    <section style={{ textAlign: 'center', display: 'grid', gridTemplateRows: '1fr 1fr 1fr', paddingTop: '5em' }}>
-      <h1 style={{ gridRowStart: '1' }}>My Product History</h1>
-      {keptView ? keptProducts : allProducts}
+    <section style={{ textAlign: 'center', display: 'flex', flexDirection: "column", alignItems:"center", gridTemplateRows: '1fr 1fr 1fr', justifyContent:'center', paddingTop: '5em' }}>
+      <h1 style={{marginBottom:"2em"}}>My Product History</h1>
+      <section style={{display:"flex", flexDirection:"row"}}>{keptView ? keptProducts : allProducts}</section>
       <article style={{ marginTop: '5em', gridRowStart: '3', display: 'flex', justifyContent: 'space-around' }}> 
         <Button onClick={toggleKept}theme='secondary'>{keptView ? "All": "Kept"}</Button>
         <Button theme='secondary'>Upcoming</Button>
