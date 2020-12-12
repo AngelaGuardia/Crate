@@ -13,7 +13,6 @@ export const userInitialState = {
     address: '',
     email: ''
   },
-  // productsHistory: {},
   isEditMode: true
 }
 
@@ -75,7 +74,8 @@ export default (state = userInitialState, action) => {
     case GET_PRODUCTS_HISTORY:
       return {
         ...state,
-        productsHistory: action.productsHistory
+        deliveries: action.deliveries,
+        products: action.products
       }
 
     default:
