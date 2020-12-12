@@ -103,11 +103,3 @@ class ProfileForm extends Component{
 
 export default connect(profileFormState, { getListByUser, saveProfile, changeEditMode })(ProfileForm)
 
-/*
-this.state = {
-  img: '',
-  address: '',
-  email: '',
-  bio: ''
-}
-*/
