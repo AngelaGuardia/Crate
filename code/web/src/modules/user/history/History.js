@@ -10,7 +10,7 @@ const History = (props) => {
   let historyIds = props.deliveries.filter(prod => prod.user.id === props.userId)
   let userProds = props.products.filter(prod => historyIds.some(id => id.id === prod.id))
   let keptDelivery = historyIds.filter(prod => prod.kept)
-    let keptProds = props.products.filter(prod => keptDelivery.some(delivery => delivery.id === prod.id))
+  let keptProds = props.products.filter(prod => keptDelivery.some(delivery => delivery.id === prod.id))
     console.log(userProds, keptProds)
   allProducts=
         userProds.map(prod => {
@@ -32,8 +32,7 @@ const History = (props) => {
       <h1 style={{ gridRowStart: '1' }}>My Product History</h1>
       {keptView ? keptProducts : allProducts}
       <article style={{ marginTop: '5em', gridRowStart: '3', display: 'flex', justifyContent: 'space-around' }}> 
-        <Button onClick={toggleKept}theme='secondary'>All</Button>
-        <Button onClick={toggleKept} theme='secondary'>Kept</Button>
+        <Button onClick={toggleKept}theme='secondary'>{keptView ? "All": "Kept"}</Button>
         <Button theme='secondary'>Upcoming</Button>
       </article>
     </section>
