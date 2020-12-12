@@ -4,16 +4,15 @@ import { connect } from 'react-redux';
 import { updateAvailability } from '../subscription/api/actions';
 
 const Availability = (props) => {
-  //change minDate from today's date to current delivery date from BE
+  let upcomingProds = props.subscriptionsByUser.list.filter(subscription => Date.now() < subscription.nextDeliveryDate).map(prod => prod.nextDeliveryDate)[0]
+  let displayDate = new Date(+upcomingProds).toString().split(" ", 4).join(", ")
   let minDate = moment().format('YYYY-MM-DD');
   let maxDate = moment().add(7, 'days').format('YYYY-MM-DD');
   return (
     <section style={{ display: 'flex', justifyContent: 'center' }}>
       <article style={{ paddingRight: '2em' }}>
-        <h3>Next Delivery: </h3>
-        <h4>Available?</h4>
+        <h3>Next Delivery:  {displayDate || "No upcoming deliveries"} </h3>
       </article>
-      {/* refactor the following conditional render*/}
       {props.user.isEditMode && 
         (<article>
           <label htmlFor='select-availability'>
@@ -27,8 +26,10 @@ const Availability = (props) => {
 
 function availabilityState(state) {
     return {
-      user: state.user
+      user: state.user,
+      subscriptionsByUser: state.subscriptionsByUser,
     }
   }
 
 export default connect(availabilityState, { updateAvailability })(Availability)
+  
