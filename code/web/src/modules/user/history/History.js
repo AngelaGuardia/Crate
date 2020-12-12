@@ -5,7 +5,7 @@ import Button from '../../../ui/button/Button';
 
 const History = (props) => {
   let keptProducts = [];
-  props.productsHistory.forEach(prod => {
+  props.deliveries.forEach(prod => {
     if (prod.kept === true) {
       keptProducts.push(prod)
     }
@@ -40,7 +40,7 @@ const History = (props) => {
 
 function historyState(state) {
   return {
-    productsHistory: state.user.productsHistory.productsHistory
+    deliveries: state.user.deliveries
   }
 }
 
