@@ -7,12 +7,13 @@ import cookie from "js-cookie";
 import { routeApi } from "../../../setup/routes";
 
 // Actions Types
-export const LOGIN_REQUEST = "AUTH/LOGIN_REQUEST";
-export const LOGIN_RESPONSE = "AUTH/LOGIN_RESPONSE";
-export const SET_USER = "AUTH/SET_USER";
-export const LOGOUT = "AUTH/LOGOUT";
-export const CHANGE_EDIT_MODE = "AUTH/CHANGE_EDIT_MODE";
-export const SAVE_PROFILE = "AUTH/SAVE_PROFILE";
+export const LOGIN_REQUEST = 'AUTH/LOGIN_REQUEST'
+export const LOGIN_RESPONSE = 'AUTH/LOGIN_RESPONSE'
+export const SET_USER = 'AUTH/SET_USER'
+export const LOGOUT = 'AUTH/LOGOUT'
+export const CHANGE_EDIT_MODE = 'AUTH/CHANGE_EDIT_MODE'
+export const SAVE_PROFILE = 'AUTH/SAVE_PROFILE'
+export const GET_PRODUCTS_HISTORY = 'AUTH/GET_PRODUCTS_HISTORY'
 
 // Actions
 
@@ -25,6 +26,31 @@ export function changeEditMode(user) {
       user,
     });
   };
+}
+
+//Set product history
+export function getProductsHistory() {
+  return dispatch => {
+
+    const productsHistory = 
+      {
+        productsHistory: [
+          {
+            productID: 1,
+            productName: 'hello'
+          },
+          {
+            productID: 2,
+            productName: 'goodbye'
+          }
+        ]
+      }
+    
+      dispatch({
+      type: GET_PRODUCTS_HISTORY,
+      productsHistory: productsHistory
+    })
+  }
 }
 
 // Set a user after login or using localStorage token
