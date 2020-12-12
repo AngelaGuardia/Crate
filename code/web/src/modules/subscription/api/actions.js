@@ -66,7 +66,7 @@ export function getListByUser(isLoading = true) {
 
     return axios.post(routeApi, query({
       operation: 'subscriptionsByUser',
-      fields: ['id', 'user { name, email }', 'crate { id, name, description }', 'createdAt']
+      fields: ['id', 'user { name, email }', 'crate { id, name, description }', 'createdAt', 'nextDeliveryDate']
     }))
       .then(response => {
         if (response.status === 200) {
