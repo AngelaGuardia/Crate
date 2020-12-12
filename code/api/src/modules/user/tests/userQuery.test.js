@@ -2,6 +2,7 @@ import request from 'supertest';
 import express from 'express';
 import graphqlHTTP from 'express-graphql';
 import schema from '../../../setup/schema';
+import models from '../../../setup/models';
 
 describe('User Queries', () => {
   let server;
@@ -17,11 +18,13 @@ describe('User Queries', () => {
   })
 
   it('returns all users', async (done) => {
+    const initialUsers = await models.User.findAll({}).map(n => n.get({ plain: true}))
+
     const response = await request(server)
       .post('/graphql')
       .send({query: `{ users { email } }`})
       .expect(200)
-    expect(response.body.data.users.length).toBe(5);
+    expect(response.body.data.users.length).toBe(initialUsers.length);
     done();
   })
 

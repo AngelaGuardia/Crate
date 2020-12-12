@@ -2,6 +2,7 @@ import request from 'supertest';
 import express from 'express';
 import graphqlHTTP from 'express-graphql';
 import schema from '../../../setup/schema';
+import models from '../../../setup/models';
 
 describe('User Mutations', () => {
   let server;
@@ -22,17 +23,19 @@ describe('User Mutations', () => {
         .send({query: `{ users { email } }`})
         .expect(200)
       const initialUsers = response1.body.data.users.length
+      console.log(models.User.findAll())
       expect(response1.body.data.users.length).toBe(initialUsers);
       done();
     })
 
-  it('Creates a new user', async (done) => {
+  it('Creates new user', async (done) => {
     const response2 = await request(server)
       .post('/graphql')
       .send({query: `mutation {userSignup(name: "Nicolas", email: "nick@gmail.com", password: "123456"){id}}`})
       .expect(200)
-    const newUserId = response2.body.data.userSignup.id
-    expect(response2.body.data.userSignup.id).toBe(newUserId);
+    const id = response2.body.data.userSignup.id
+    const newUser = models.User.findOne({where: { id }})
+    expect(newUser.name).toBe("Nicolas");
     done();
   })
 
