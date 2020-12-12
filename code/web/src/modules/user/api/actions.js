@@ -39,11 +39,12 @@ export function getProductsHistory() {
     axios.post(routeApi, query({
       operation: 'products',
       fields: ['id', 'name', 'slug', 'description', 'image', 'createdAt', 'updatedAt']
-    })).then(response => products = response)
-    dispatch({
-      type: GET_PRODUCTS_HISTORY,
-      deliveries,
-      products
+    })).then(response => products = response).then(()=>{
+      dispatch({
+        type: GET_PRODUCTS_HISTORY,
+        deliveries,
+        products
+      })
     })
   }
 }
