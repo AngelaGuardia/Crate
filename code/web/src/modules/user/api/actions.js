@@ -35,15 +35,16 @@ export function getProductsHistory() {
     axios.post(routeApi, query({
       operation: 'deliveries',
       fields: ['user{id}', 'product{id}', 'id', 'kept']
-    })).then(response => deliveries = response)
-    axios.post(routeApi, query({
-      operation: 'products',
-      fields: ['id', 'name', 'slug', 'description', 'image', 'createdAt', 'updatedAt']
-    })).then(response => products = response).then(()=>{
-      dispatch({
-        type: GET_PRODUCTS_HISTORY,
-        deliveries,
-        products
+    })).then(response => deliveries = response).then(()=>{
+      axios.post(routeApi, query({
+        operation: 'products',
+        fields: ['id', 'name', 'slug', 'description', 'image', 'createdAt', 'updatedAt']
+      })).then(response => products = response).then(()=>{
+        dispatch({
+          type: GET_PRODUCTS_HISTORY,
+          deliveries, 
+          products 
+        })
       })
     })
   }
