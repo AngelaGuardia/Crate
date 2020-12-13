@@ -30,6 +30,7 @@ class ProfileForm extends Component{
   }
 
   updateProfile = () => {
+    let newDate = {};
     let newState = {
           id: this.props.user.details.id,
           image: this.state.img || this.props.user.details.img || '',
@@ -37,10 +38,13 @@ class ProfileForm extends Component{
           email: this.state.email || this.props.user.details.email || '',
           description: this.state.description || this.props.user.details.description || ''
         }
-    let newDate = {
-      id: this.props.subscriptionsByUser.list[0].id,
-      nextDeliveryDate: this.props.subscriptionsByUser.nextDeliveryDate
-    }
+        if(this.props.subscriptionsByUser.list[0]) {
+        
+          newDate = {
+            id: this.props.subscriptionsByUser.list[0].id,
+            nextDeliveryDate: this.props.subscriptionsByUser.nextDeliveryDate
+          }
+        }
     this.props.saveProfile(newState, newDate, this.props.subscriptionsByUser.list.map(x => x.id))
     this.props.changeEditMode(this.props.user)
   }
