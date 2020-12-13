@@ -10,10 +10,10 @@ const History = (props) => {
   useEffect(() => {
     props.getListByUser()
 }, []);
-  let allProducts, keptProducts, userProds, keptProds;
+  let allProducts, keptProducts, historyIds;
   const [keptView, toggleKeptView] = useState(false)
   if (props.deliveries){
-  let historyIds = props.deliveries.filter(prod => prod.user.id === props.userId)
+  historyIds = props.deliveries.filter(prod => prod.user.id === props.userId)
   let userProds = props.products.filter(prod => historyIds.some(id => id.id === prod.id))
   let keptDelivery = historyIds.filter(prod => prod.kept)
   let keptProds = props.products.filter(prod => keptDelivery.some(delivery => delivery.id === prod.id))
@@ -39,7 +39,10 @@ const History = (props) => {
   return (
     <section style={{ textAlign: 'center', display: 'flex', flexDirection: "column", alignItems:"center", gridTemplateRows: '1fr 1fr 1fr', justifyContent:'center', paddingTop: '5em' }}>
       <h1 style={{marginBottom:"2em"}}>My Product History</h1>
-      <section style={{display:"flex", flexDirection:"row"}}>{keptView ? keptProducts : allProducts}</section>
+      <section style={{display:"flex", flexDirection:"row"}}>
+        {keptView ? keptProducts : allProducts}
+        {historyIds === undefined && <h2>No orders found. <br /> Subscribe to a crate to get started!</h2>}
+      </section>
       <article style={{ marginTop: '5em', gridRowStart: '3', display: 'flex', justifyContent: 'space-around' }}> 
         <Button onClick={toggleKept}theme='secondary'>{keptView ? "All": "Kept"}</Button>
       </article>
