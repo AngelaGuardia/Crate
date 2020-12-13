@@ -1,3 +1,75 @@
+# Crate
+
+This *Crate* application is based on monthly subscriptions to crates, or types of clothing and accessories for various people.
+
+Crate has been further developed by a team of six software engineers from Turing School of Software and Design.  
+
+Contributors: 
+
+Back-end: [Angela Guardia](https://github.com/AngelaGuardia), [Cam Chery](https://github.com/ckccameron), [Nico Rithner](https://github.com/nicorithner)
+
+Front-end: [Blake Donnelly](https://github.com/BlakeDonn), [Nicole Gooden](https://github.com/nicolegooden), [Ian Holladay](https://github.com/holladayian)
+
+## Context
+
+This is a brownfield application where our team of six has been tasked with implementing new features for a complex, pre-existing codebase.  Details of the original README can be found below ours.  
+
+The new features pertain to improving the user experience when using the profile page:
+
++ Allow the user to...
+  + add an image
+  + set a personal description
+  + edit email address
+  + edit shipping address
+  + see history of kept products
+  + see history of all products delivered
+  + see the next upcoming delivery date
+  + edit availability to receive orders
+
+## Tech
+
+The front-end team has been learning and implementing Redux, Axios, and querying and mutating GraphQL data.  The back-end team has been learning and implementing GraphQL, Express, and Node.
+
+## Features
+
+
+## Wins
+
++ Connecting the front-end to the back-end while learning new tech
++ Developing a process to explore an existing codebase, then build new features
++ Maintaining strong communication via PR conversations, detailed PRs, and atomic commits
+
+## Challenges
+
++ Balancing testing with feature implementation in a narrow window of time (5 days)
++ Determining how Axios communicates with data stored by GraphQL
+
+## Next Steps
+
++ Allow the user to upload images via files, rather than links for `img` elements
++ Add more error handling for the following situations:
+  + user visits an invalid path
+  + user adds an email address without required characters, such as `@` or `.com`.
++ Add more thorough testing on both the front-end and the back-end, particularly for the `History` component
+
+## Back-end Testing
+
+Run the following commands to run BE tests:
+- run `npm install`
+- Navigate into the api directory
+- To set up the test DB run:
+  - `psql`
+  - `CREATE DATABASE crate_testing;`
+  - `quit`
+  - `NODE_ENV=test ./node_modules/.bin/sequelize db:migrate`
+  - `NODE_ENV=test ./node_modules/.bin/sequelize db:seed:all`
+- Run tests: `npm run test:watch`
+
+
+
+
+
+
 ![Crate](https://raw.githubusercontent.com/atulmy/atulmy.github.io/master/images/crate/hero-with-link.png)
 
 # Crate 👕👖📦
@@ -164,33 +236,9 @@ Click on image to view fullscreen and zoom
 - Mohammad Afzal - [GitHub](https://github.com/afzalex)
 - [YOUR NAME HERE] - Feel free to contribute to the codebase by resolving any open issues, refactoring, adding new features, writing test cases or any other way to make the project better and helpful to the community. Feel free to fork and send pull requests.
 
-
-## Donate
-If you liked this project, you can donate to support it ❤️
-
-[![Donate via PayPal](https://raw.githubusercontent.com/atulmy/atulmy.github.io/master/images/mix/paypal-me-smaller.png)](http://paypal.me/atulmy) [![Become a Patreon](https://raw.githubusercontent.com/atulmy/atulmy.github.io/master/images/mix/patreon.png?v=1)](https://www.patreon.com/atulmy)
-
-
-## Hire me
-Looking for a developer to build your next idea or need a developer to work remotely? Get in touch: [atul.12788@gmail.com](mailto:atul.12788@gmail.com)
-
-
 ## License
 Copyright (c) 2018 Atul Yadav http://github.com/atulmy
 
 The MIT License (http://www.opensource.org/licenses/mit-license.php)
 
-# Our README
 
-## Testing
-
-Run the following commands to run BE tests:
-- run `npm install`
-- Navigate into the api directory
-- To set up the test DB run:
-  - `psql`
-  - `CREATE DATABASE crate_testing;`
-  - `quit`
-  - `NODE_ENV=test ./node_modules/.bin/sequelize db:migrate`
-  - `NODE_ENV=test ./node_modules/.bin/sequelize db:seed:all`
-- Run tests: `npm run test:watch`
