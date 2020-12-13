@@ -44,10 +44,10 @@ class ProfileForm extends Component{
 
   render() {
       return (
-        <section data-testid="profile" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', padding: '2em'}}>
+        <section style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', padding: '2em'}}>
         {this.props.user.isEditMode ?
           (
-            <article data-testid="profile-edit-mode" style={{ display: 'flex', flexDirection: 'row', padding: '2em', height: '15em'  }}>  
+            <article style={{ display: 'flex', flexDirection: 'row', padding: '2em', height: '15em'  }}>  
               {/* look into image file/upload */}
               <label htmlFor='img-input'>
                 Image
@@ -69,10 +69,10 @@ class ProfileForm extends Component{
                 <input id='description-input' style={{display: 'block'}} onChange={e => this.updateProfileState(e)} name='description' placeholder={this.props.user.details.description || 'no description'} value={this.state.description} />
               </label>
               {/* change the name of changeEditMode or use conditionals */}
-            </article>
+            </article> 
           ) :
           (
-            <article data-testid="profile-save-mode" style={{ display: 'flex', flexDirection: 'row', padding: '2em', height: '15em'  }}>  
+            <article style={{ display: 'flex', flexDirection: 'row', padding: '2em', height: '15em'  }}>  
               <img style={{ width: '10em', height: '15em', objectFit: 'cover' }} src={this.props.user.details.img}></img>
               <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', paddingLeft: '2em', paddingRight: '2em' }}>
                 <p>Address: {this.props.user.details.address}</p>
@@ -83,8 +83,8 @@ class ProfileForm extends Component{
             </article>
           )}
           {this.props.user.isEditMode ?
-          <Button data-testid="profile-save-button" onClick={this.updateProfile} theme="secondary">Save Profile</Button> :
-          <Button data-testid="profile-edit-button" onClick={() => this.props.changeEditMode(this.props.user)} theme="secondary">Edit Profile</Button>}
+          <Button onClick={this.updateProfile} theme="secondary">Save Profile</Button> :
+          <Button onClick={() => this.props.changeEditMode(this.props.user)} theme="secondary">Edit Profile</Button>}
         </section>
       )   
     }
@@ -98,9 +98,4 @@ class ProfileForm extends Component{
   }
 
 
-<<<<<<< HEAD
-export default connect(profileFormState, { getListByUser, saveProfile, changeEditMode })(ProfileForm)
-
-=======
 export default connect(profileFormState, { saveProfile, changeEditMode })(ProfileForm)
->>>>>>> Remove comments
