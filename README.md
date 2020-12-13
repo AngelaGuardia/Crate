@@ -4,13 +4,17 @@ This *Crate* application is based on monthly subscriptions to crates, or types o
 
 Crate has been further developed by a team of six software engineers from Turing School of Software and Design.  
 
-Contributors: [Angela Guardia](https://github.com/AngelaGuardia), [Blake Donnelly](https://github.com/BlakeDonn), [Nicole Gooden](https://github.com/nicolegooden), [Cam Chery](https://github.com/ckccameron), [Ian Holladay](https://github.com/holladayian), [Nico Rithner](https://github.com/nicorithner)
+Contributors: 
+
+Back-end: [Angela Guardia](https://github.com/AngelaGuardia), [Cam Chery](https://github.com/ckccameron), [Nico Rithner](https://github.com/nicorithner)
+
+Front-end: [Blake Donnelly](https://github.com/BlakeDonn), [Nicole Gooden](https://github.com/nicolegooden), [Ian Holladay](https://github.com/holladayian)
 
 ## Context
 
 This is a brownfield application where our team of six has been tasked with implementing new features for a complex, pre-existing codebase.  Details of the original README can be found below ours.  
 
-The new features pertain to improving the user experience for the user's profile page:
+The new features pertain to improving the user experience when using the profile page:
 
 + Allow the user to...
   + add an image
@@ -22,8 +26,33 @@ The new features pertain to improving the user experience for the user's profile
   + see the next upcoming delivery date
   + edit availability to receive orders
 
+## Tech
 
-## Testing
+The front-end team has been learning and implementing Redux, Axios, and querying and mutating GraphQL data.  The back-end team has been learning and implementing GraphQL, Express, and Node.
+
+## Features
+
+
+## Wins
+
++ Connecting the front-end to the back-end while learning new tech
++ Developing a process to explore an existing codebase, then build new features
++ Maintaining strong communication via PR conversations, detailed PRs, and atomic commits
+
+## Challenges
+
++ Balancing testing with feature implementation in a narrow window of time (5 days)
++ Determining how Axios communicates with data stored by GraphQL
+
+## Next Steps
+
++ Allow the user to upload images via files, rather than links for `img` elements
++ Add more error handling for the following situations:
+  + user visits an invalid path
+  + user adds an email address without required characters, such as `@` or `.com`.
++ Add more thorough testing on both the front-end and the back-end, particularly for the `History` component
+
+## Back-end Testing
 
 Run the following commands to run BE tests:
 - run `npm install`
