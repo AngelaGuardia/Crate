@@ -10,14 +10,15 @@ const History = (props) => {
   useEffect(() => {
     props.getListByUser()
 }, []);
-  let allProducts, keptProducts, historyIds;
+  let allProducts, keptProducts;
+  let historyIds = [];
   const [keptView, toggleKeptView] = useState(false)
   if (props.deliveries){
   historyIds = props.deliveries.filter(prod => prod.user.id === props.userId)
   let userProds = props.products.filter(prod => historyIds.some(id => id.id === prod.id))
   let keptDelivery = historyIds.filter(prod => prod.kept)
   let keptProds = props.products.filter(prod => keptDelivery.some(delivery => delivery.id === prod.id))
-  allProducts=
+  allProducts =
         userProds.map(prod => {
           return (<article style={{ border:'solid', width:"10em", marginRight:"1em"}}>
                   <h3>{prod.name}</h3>
@@ -25,7 +26,7 @@ const History = (props) => {
                   <h3>{prod.description}</h3>
                 </article>)})
 
-  keptProducts=
+  keptProducts =
         keptProds.map(prod => {
           return (<article style={{  border:'solid',  width:"10em", marginRight:"1em"}}>
                   <h3>{prod.name}</h3>
