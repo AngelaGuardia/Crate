@@ -41,7 +41,7 @@ const History = (props) => {
       <h1 style={{marginBottom:"2em"}}>My Product History</h1>
       <section style={{display:"flex", flexDirection:"row"}}>
         {keptView ? keptProducts : allProducts}
-        {historyIds === undefined && <h2>No orders found. <br /> Subscribe to a crate to get started!</h2>}
+        {historyIds.length === 0 && <h2>No orders found. <br /> Subscribe to a crate to get started!</h2>}
       </section>
       <article style={{ marginTop: '5em', gridRowStart: '3', display: 'flex', justifyContent: 'space-around' }}> 
         <Button onClick={toggleKept}theme='secondary'>{keptView ? "All": "Kept"}</Button>
